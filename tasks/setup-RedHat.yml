@@ -1,0 +1,9 @@
+---
+- name: Download Telegraf package.
+  get_url:
+    url: http://get.influxdb.org/telegraf/telegraf-{{ telegraf_version }}-1.x86_64.rpm
+    dest: /tmp/telegraf-{{ telegraf_version }}-1.x86_64.rpm
+    mode: 0440
+
+- name: Install Telegraf.
+  yum: name=/tmp/telegraf-{{ telegraf_version }}-1.x86_64.rpm state=present

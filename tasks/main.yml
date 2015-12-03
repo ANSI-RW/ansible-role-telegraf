@@ -1,0 +1,23 @@
+---
+- include: setup-RedHat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Ensure Telegraf config path exists.
+  file: path={{ telegraf_config_path }} state=directory
+  when: telegraf_config_use_template
+
+- name: Copy Telegraf config.
+  template:
+    src: "{{ telegraf_config_template_path }}"
+    dest: "{{ telegraf_config_path }}/telegraf.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart telegraf
+  when: telegraf_config_use_template
+
+- name: Ensure Telegraf is started.
+  service: name=telegraf state=started
+
+- name: Ensure Telegraf is set to run on startup.
+  service: name=telegraf enabled=yes
