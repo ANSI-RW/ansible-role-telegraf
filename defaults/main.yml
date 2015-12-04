@@ -1,17 +1,17 @@
 ---
-# Telegraf version
+# Version that should be installed
 telegraf_version: 0.2.3
 
-# Config path/template
-telegraf_config_path: /etc/opt/telegraf
-telegraf_config_template_path: telegraf.conf.j2
+# Use the included config template
 telegraf_config_use_template: true
+# Where config files will be stored
+telegraf_config_dir: /etc/opt/telegraf
 
-# Config tags section
+# Config [tags] section
 telegraf_config_tags: []
   # - dc = "us-east-1"
 
-# Config agent section
+# Config [agent] section
 telegraf_config_agent:
   # Default data collection interval for all plugins
   - interval = "10s"
@@ -31,7 +31,7 @@ telegraf_config_agent:
   # Override default hostname, if empty use os.Hostname()
   - hostname = ""
 
-# Config outputs section
+# Config [outputs] section
 telegraf_config_outputs:
   - output: influxdb
     config:
@@ -46,6 +46,7 @@ telegraf_config_outputs:
       # note: using second precision greatly helps InfluxDB compression
       - precision = "s"
 
+# Config [plugins] section
 telegraf_config_plugins:
   # Read metrics about cpu usage
   - plugin: cpu
@@ -67,8 +68,9 @@ telegraf_config_plugins:
   # Read metrics about system load & uptime
   - plugin: system
 
-telegraf_config_service_plugins: []
-  # - plugin: statsd
+# Other sections
+telegraf_config_other: []
+  # - section: statsd
   #   config:
   #     # Address and port to host UDP listener on
   #     - service_address = ":8125"
