@@ -9,7 +9,6 @@ telegraf_config_dir: /etc/opt/telegraf
 
 # Config [tags] section
 telegraf_config_tags: []
-  # - dc = "us-east-1"
 
 # Config [agent] section
 telegraf_config_agent:
@@ -68,10 +67,3 @@ telegraf_config_plugins:
   - plugin: swap
   # Read metrics about system load & uptime
   - plugin: system
-
-# Other sections
-telegraf_config_other: []
-  # - section: statsd
-  #   config:
-  #     # Address and port to host UDP listener on
-  #     - service_address = ":8125"
