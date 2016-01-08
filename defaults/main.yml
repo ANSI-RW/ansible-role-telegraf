@@ -1,6 +1,6 @@
 ---
 # Version that should be installed
-telegraf_version: 0.2.3
+telegraf_version: 0.3.0_beta2
 
 # Use the included config template
 telegraf_config_use_template: true
@@ -38,7 +38,8 @@ telegraf_config_outputs:
       # The full HTTP or UDP endpoint URL for your InfluxDB instance. Multiple
       # urls can be specified but it is assumed that they are part of the same
       # cluster, this means that only ONE of the urls will be written to each
-      # interval. urls = ["udp://localhost:8089"] # UDP endpoint example
+      # interval.
+      # urls = ["udp://localhost:8089"] # UDP endpoint example
       - urls = ["http://localhost:8086"]
       # The target database for metrics (telegraf will create it if not exists)
       - database = "telegraf"
@@ -56,11 +57,11 @@ telegraf_config_plugins:
       # Whether to report total system cpu stats or not
       - totalcpu = true
       # Comment this line if you want the raw CPU time metrics
-      - drop = ["cpu_time"]
+      - drop = ["time_*"]
   # Read metrics about disk usage by mount point
   - plugin: disk
   # Read metrics about disk IO by device
-  - plugin: io
+  - plugin: diskio
   # Read metrics about memory usage
   - plugin: mem
   # Read metrics about swap memory usage
