@@ -1,11 +1,11 @@
-# Telegraf configuration file.
+# Telegraf configuration
 
 ###############################################################################
 # TAGS                                                                        #
 ###############################################################################
 
 [tags]
-{% for item in telegraf_config_tags %}
+{% for item in telegraf_conf_tags %}
   {{ item }}
 {% endfor %}
 
@@ -14,38 +14,33 @@
 ###############################################################################
 
 [agent]
-{% for item in telegraf_config_agent %}
-  {{ item }}
-{% endfor %}
+  interval = "{{ telegraf_conf_agent_interval }}"
+  round_interval = {{ telegraf_conf_agent_round_interval|lower }}
+  flush_interval = "{{ telegraf_conf_agent_flush_interval }}"
+  flush_jitter = "{{ telegraf_conf_agent_flush_jitter }}"
+  debug = {{ telegraf_conf_agent_debug|lower }}
+  hostname = "{{ telegraf_conf_agent_hostname }}"
 
 ###############################################################################
 # OUTPUTS                                                                     #
 ###############################################################################
 
-[outputs]
-
-{% for item in telegraf_config_outputs %}
-[[outputs.{{ item.output }}]]
-{% if item.config is defined %}
-{% for item in item.config %}
+{% for key, value in telegraf_conf_outputs.iteritems() %}
+[[outputs.{{ key }}]]
+{% for item in value %}
   {{ item }}
 {% endfor %}
-{% endif %}
 
 {% endfor %}
 
 ###############################################################################
-# PLUGINS                                                                     #
+# INPUTS                                                                      #
 ###############################################################################
 
-[plugins]
-
-{% for item in telegraf_config_plugins %}
-[[plugins.{{ item.plugin }}]]
-{% if item.config is defined %}
-{% for item in item.config %}
+{% for key, value in telegraf_conf_inputs.iteritems() %}
+[[inputs.{{ key }}]]
+{% for item in value %}
   {{ item }}
 {% endfor %}
-{% endif %}
 
 {% endfor %}

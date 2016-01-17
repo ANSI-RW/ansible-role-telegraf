@@ -2,8 +2,14 @@
 - include: setup-RedHat.yml
   when: ansible_os_family == "RedHat"
 
-- include: configure-RedHat.yml
-  when: ansible_os_family == "RedHat"
+- name: copy telegraf conf
+  template:
+    src: telegraf.conf.j2
+    dest: "/etc/telegraf/telegraf.conf"
+    owner: root
+    group: root
+  notify: restart telegraf
+  when: telegraf_conf_use_template
 
-- name: Start and enable Telegraf.
+- name: start and enable telegraf
   service: name=telegraf state=started enabled=yes

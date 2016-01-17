@@ -1,9 +1,0 @@
----
-- name: Copy Telegraf config.
-  template:
-    src: telegraf.conf.j2
-    dest: "{{ telegraf_config_dir }}/telegraf.conf"
-    owner: root
-    group: root
-  notify: restart telegraf
-  when: telegraf_config_use_template
