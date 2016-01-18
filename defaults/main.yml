@@ -7,7 +7,6 @@ telegraf_conf_use_template: true
 
 # Config [tags] section
 telegraf_conf_tags: []
-  # - dc = "us-east-1"
 
 # Default data collection interval for all plugins
 telegraf_conf_agent_interval: 10s
@@ -25,6 +24,7 @@ telegraf_conf_agent_flush_jitter: 0s
 telegraf_conf_agent_debug: false
 # Override default hostname, if empty use os.Hostname()
 telegraf_conf_agent_hostname: ""
+telegraf_conf_agent_other: []
 
 # Config [outputs] section
 telegraf_conf_outputs:

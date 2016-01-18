@@ -20,6 +20,9 @@
   flush_jitter = "{{ telegraf_conf_agent_flush_jitter }}"
   debug = {{ telegraf_conf_agent_debug|lower }}
   hostname = "{{ telegraf_conf_agent_hostname }}"
+{% for item in telegraf_conf_agent_other %}
+  {{ item }}
+{% endfor %}
 
 ###############################################################################
 # OUTPUTS                                                                     #
