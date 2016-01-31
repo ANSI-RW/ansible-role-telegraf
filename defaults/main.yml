@@ -1,6 +1,6 @@
 ---
 # Version that should be installed
-telegraf_version: 0.10.0
+telegraf_version: 0.10.1
 
 # Use the included config template
 telegraf_conf_use_template: true

@@ -14,7 +14,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ```yaml
 # Version that should be installed
-telegraf_version: 0.10.0
+telegraf_version: 0.10.1
 
 # Use the included config template
 telegraf_conf_use_template: true
@@ -77,7 +77,7 @@ telegraf_conf_inputs:
   system: []
 ```
 
-Default values for the `telegraf.conf.j2` template are based on the [0.10.0 config](https://github.com/influxdata/telegraf/blob/0.10.0/etc/telegraf.conf).
+Default values for the `telegraf.conf.j2` template are based on the [0.10.1 config](https://github.com/influxdata/telegraf/blob/0.10.1/etc/telegraf.conf).
 
 ## Dependencies
 
