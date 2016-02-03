@@ -92,7 +92,7 @@ None
     - vars/main.yml
 
   roles:
-    - role: rwanyoike.telegraf
+    - role: ansible-role-telegraf
 ```
 
 Inside `vars/main.yml`:
@@ -107,7 +107,3 @@ telegraf_conf_tags:
 ## License
 
 MIT
-
-## Author Information
-
-This role was created in 2015 by [Raymond Wanyoike](https://github.com/rwanyoike).
