@@ -1,0 +1,8 @@
+---
+- name: download telegraf
+  get_url:
+    url: http://get.influxdb.org/telegraf/telegraf_{{ telegraf_version }}-1_amd64.deb
+    dest: /tmp/telegraf_{{ telegraf_version }}-1_amd64.deb
+
+- name: install telegraf
+  apt: deb=/tmp/telegraf_{{ telegraf_version }}-1_amd64.deb state=present
