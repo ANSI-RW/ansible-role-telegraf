@@ -4,8 +4,9 @@
 # TAGS                                                                        #
 ###############################################################################
 
-[tags]
-{% for item in telegraf_conf_tags %}
+# Global tags can be specified here in key="value" format
+[global_tags]
+{% for item in telegraf_conf_global_tags %}
   {{ item }}
 {% endfor %}
 
@@ -13,21 +14,52 @@
 # AGENT                                                                       #
 ###############################################################################
 
+# Configuration for telegraf agent
 [agent]
+  # Default data collection interval for all inputs
   interval = "{{ telegraf_conf_agent_interval }}"
-  round_interval = {{ telegraf_conf_agent_round_interval|lower }}
+  # Rounds collection interval to 'interval'
+  # ie, if interval="10s" then always collect on :00, :10, :20, etc.
+  round_interval = {{ telegraf_conf_agent_round_interval }}
+
+  # Telegraf will cache metric_buffer_limit metrics for each output, and will
+  # flush this buffer on a successful write
+  metric_buffer_limit = {{ telegraf_conf_agent_metric_buffer_limit }}
+  # Flush the buffer whenever full, regardless of flush_interval
+  flush_buffer_when_full = {{ telegraf_conf_agent_flush_buffer_when_full }}
+
+  # Collection jitter is used to jitter the collection by a random amount. Each
+  # plugin will sleep for a random time within jitter before collecting. This
+  # can be used to avoid many plugins querying things like sysfs at the same
+  # time, which can have a measurable effect on the system
+  collection_jitter = "{{ telegraf_conf_agent_collection_jitter }}"
+
+  # Default flushing interval for all outputs. You shouldn't set this below
+  # interval. Maximum flush_interval will be flush_interval + flush_jitter
   flush_interval = "{{ telegraf_conf_agent_flush_interval }}"
+  # Jitter the flush interval by a random amount. This is primarily to avoid
+  # large write spikes for users running a large number of telegraf instances.
+  # ie, a jitter of 5s and interval 10s means flushes will happen every 10-15s
   flush_jitter = "{{ telegraf_conf_agent_flush_jitter }}"
-  debug = {{ telegraf_conf_agent_debug|lower }}
+
+  # Run telegraf in debug mode
+  debug = {{ telegraf_conf_agent_debug }}
+  # Run telegraf in quiet mode
+  quiet = {{ telegraf_conf_agent_quiet }}
+  # Override default hostname, if empty use os.Hostname()
   hostname = "{{ telegraf_conf_agent_hostname }}"
+
 {% for item in telegraf_conf_agent_other %}
   {{ item }}
-{% endfor %}
+{% if loop.last %}
 
+{% endif %}
+{% endfor %}
 ###############################################################################
 # OUTPUTS                                                                     #
 ###############################################################################
 
+# Configuration for influxdb server to send metrics to
 {% for key, value in telegraf_conf_outputs.iteritems() %}
 [[outputs.{{ key }}]]
 {% for item in value %}
