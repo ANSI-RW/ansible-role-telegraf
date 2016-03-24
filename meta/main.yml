@@ -1,2 +1,20 @@
 ---
+galaxy_info:
+  author: Raymond Wanyoike
+  description: Installs and configures Telegraf on RHEL/CentOS or Debian/Ubuntu.
+  company: ANSI-RW
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Debian
+      versions:
+        - jessie
+
+  galaxy_tags:
+    - monitoring
+    - telegraf
+
 dependencies: []

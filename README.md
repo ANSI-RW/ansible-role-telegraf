@@ -1,8 +1,8 @@
 # Ansible Role: Telegraf
 
-[![Build Status](https://img.shields.io/travis/rwanyoike/ansible-role-telegraf.svg)](https://travis-ci.org/rwanyoike/ansible-role-telegraf) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rwanyoike/ansible-role-telegraf/master/LICENSE)
+[![Build Status](https://img.shields.io/travis/ANSI-RW/ansible-role-telegraf.svg)](https://travis-ci.org/ANSI-RW/ansible-role-telegraf) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ANSI-RW/ansible-role-telegraf/master/LICENSE)
 
-Installs and configures Telegraf on RHEL/CentOS ~~or Debian/Ubuntu~~.
+Installs and configures Telegraf on RHEL/CentOS or Debian/Ubuntu.
 
 ## Requirements
 
@@ -73,7 +73,7 @@ None
     - vars/main.yml
 
   roles:
-    - role: ansible-role-telegraf
+    - { role: ANSI-RW.telegraf }
 ```
 
 Inside `vars/main.yml`:
