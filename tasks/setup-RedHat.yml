@@ -5,4 +5,4 @@
     dest: /tmp/telegraf-{{ telegraf_version }}-1.x86_64.rpm
 
 - name: install telegraf
-  yum: name=/tmp/telegraf-{{ telegraf_version }}-1.x86_64.rpm state=present
+  package: name=/tmp/telegraf-{{ telegraf_version }}-1.x86_64.rpm state=present
