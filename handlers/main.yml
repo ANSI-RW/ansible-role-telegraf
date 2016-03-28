@@ -1,3 +1,4 @@
 ---
 - name: restart telegraf
   service: name=telegraf state=restarted
+  when: telegraf_enable_service

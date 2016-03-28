@@ -16,3 +16,4 @@
 
 - name: start and enable telegraf
   service: name=telegraf state=started enabled=yes
+  when: telegraf_enable_service
