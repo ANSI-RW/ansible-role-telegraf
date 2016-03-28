@@ -1,14 +1,17 @@
-# Ansible Role: Telegraf
+Ansible Role: Telegraf
+======================
 
 [![Build Status](https://img.shields.io/travis/ANSI-RW/ansible-role-telegraf.svg)](https://travis-ci.org/ANSI-RW/ansible-role-telegraf) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/ANSI-RW/ansible-role-telegraf/master/LICENSE)
 
 Installs and configures Telegraf on RHEL/CentOS or Debian/Ubuntu.
 
-## Requirements
+Requirements
+------------
 
 None
 
-## Role Variables
+Role Variables
+--------------
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
@@ -62,11 +65,13 @@ telegraf_conf_inputs:
 
 Default values for the `telegraf.conf.j2` template are based on the [0.11.1 config](https://github.com/influxdata/telegraf/blob/0.11.1/etc/telegraf.conf).
 
-## Dependencies
+Dependencies
+------------
 
 None
 
-## Example Playbook
+Example Playbook
+----------------
 
 ```yaml
 - hosts: servers
@@ -88,6 +93,7 @@ telegraf_conf_global_tags:
 # ... etc ...
 ```
 
-## License
+License
+-------
 
 MIT
