@@ -5,4 +5,6 @@
     dest: /tmp/telegraf_{{ telegraf_version }}-1_amd64.deb
 
 - name: install telegraf
+  # FIXME: https://github.com/ansible/ansible-modules-core/issues/2430
+  # Bug in "apt" module causes task to always report {"changed": true}
   apt: deb=/tmp/telegraf_{{ telegraf_version }}-1_amd64.deb state=present
